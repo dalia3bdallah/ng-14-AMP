@@ -1,0 +1,22 @@
+.crop {
+  overflow: hidden;
+}
+div {
+  cursor: pointer;
+}
+/* added by me */
+.fa-star{
+  position: relative;
+  width: calc(75px / 5);
+  color: green;
+  z-index: 10;
+  font-size: 13px;
+}
+
+.basic-stars .fa-star {
+  color: #ccc;
+}
+
+.basic-stars {
+  position: absolute;
+}

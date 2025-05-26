@@ -1,0 +1,7 @@
+.img-product-dtl img {
+    max-width: 90%;
+    display: block;
+    margin: auto;
+    border: 1px solid #ccc;
+    text-align: center;
+}

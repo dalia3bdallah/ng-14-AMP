@@ -1,0 +1,67 @@
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+        <span class="float-end small"id="ratingClick">{{clickedMassage}}</span>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">filter by : </div>
+            <div class="col-md-4">
+                <input type="text"
+                        [(ngModel)]="filteredValue">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>filtered by : {{filteredValue}} </h4>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table" *ngIf="products.length">
+                <thead>
+                    <tr>
+                        <th>
+                            <button class="btn btn-sm btn-primary"
+                                    (click)="imgToggle()">
+                            {{imgShow ? "hide" : "show"}} mage</button>
+                        </th>
+                        <th>product</th>
+                        <th>code</th>
+                        <th>available</th>
+                        <th>price</th>
+                        <th>5 star rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of filteredProducts">
+                        <td>
+                            <img *ngIf="imgShow" 
+                                [src]='product.imageUrl'
+                                [title]='product.productName'
+                                [style.width.px]='imageWidth'
+                                [style.margin]='imageMargin'
+                                [style.background]='imgBackground'
+                                [style.border]='imgBorder'
+                                [style.height]="imgHeight" >
+                        </td>
+                        <td>
+                            <a [routerLink]="['/products' , product.productId]">
+                            {{product.productName}}
+                            </a>
+                        </td>
+                        <td>{{product.productCode | lowercase | convertToSpaces:"-" }}</td>
+                        <td>{{product.releaseDate | date}}</td>
+                        <td>{{product.price | currency :"USD" : "symbol" :"1.2-2"}}</td>
+                        <td>
+                            <pm-star [rating]="product.starRating"
+                                (ratingClicked)="onRatingCicked($event)"></pm-star> 
+                                <span class="small">
+                                    ( {{product.starRating | number:"1.1-1"}} reviews )
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
