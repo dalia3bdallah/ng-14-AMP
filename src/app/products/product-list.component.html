@@ -3,20 +3,76 @@
         {{pageTitle}}
         <span class="float-end small"id="ratingClick">{{clickedMassage}}</span>
     </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-2">filter by : </div>
-            <div class="col-md-4">
-                <input type="text"
-                        [(ngModel)]="filteredValue">
+    <div class="card-body px-4">
+
+<div class="row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="inputPassw" class="col-form-label">filter by :</label>
+  </div>
+  <div class="col-auto">
+    <input type="text" class="form-control form-control-sm" [(ngModel)]="filteredValue" aria-describedby="searchHelpInline">
+  </div>
+  <div class="col-auto">
+    <span id="searchHelpInline" class="form-text">
+      you searched about : {{filteredValue}}
+    </span>
+
+  </div>
+  <div class="col-auto ms-auto">
+    <span id="searchHelpInline" class="form-text">
+        <div class="float-end">
+                        <label for="" class="px-2">view as : </label>
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <button type="button" class="btn btn-outline-primary btn-primary show-grid"
+                                (click)="onshowGrid()">
+                                <span class="fa-regular fa-address-card"></span>
+                                grid
+                            </button>
+                            <button type="button" class="btn btn-outline-primary show-table" (click)="onshowtable()">
+                                <span class="fa fa-th"></span>
+                                table
+                            </button>
+                        </div>
+                    </div>
+    </span>
+  </div>
+</div>
+
+  <div class="grid-view" *ngIf="gridView">
+            <div class=" ">
+                <div class="row align-items-lg-stretch" *ngIf="products.length; else nodatafound">
+                    <!-- <div id="no-results" class="alert alert-warning"
+                        *ngIf="( Products |search :searchfilter).length==0">
+                        no products matches your search
+                    </div> -->
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-12"
+                        *ngFor="let Product of filteredProducts">
+                        <div class="card item-to-click" [routerLink]="['/products' , Product.productId]" >
+                            <img src="{{Product.imageUrl}}" alt="{{Product.productName}}" title="{{Product.description}}"
+                                class="img-fluid card-img-top">
+
+                            <div class="card-body">
+                                <div>ID : {{ Product.productId}}</div>
+                                <div class="pro-title">{{Product.productName}}</div>
+                                <div><span class="price">{{Product.price |currency }} </span></div>
+
+                                <div>{{Product.releaseDate}}</div>
+                                <div  class="dal-star">
+                                   <span> <pm-star [rating]="Product.starRating"></pm-star></span>
+                                    <span>( {{Product.starRating | number:"1.1-1"}} reviews )</span>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <h4>filtered by : {{filteredValue}} </h4>
-            </div>
-        </div>
-        <div class="table-responsive">
+
+
+        <div class="table-responsive table-view" *ngIf="tableView;">
             <table class="table" *ngIf="products.length">
                 <thead>
                     <tr>
@@ -35,7 +91,7 @@
                 <tbody>
                     <tr *ngFor="let product of filteredProducts">
                         <td>
-                            <img *ngIf="imgShow" 
+                            <img *ngIf="imgShow"
                                 [src]='product.imageUrl'
                                 [title]='product.productName'
                                 [style.width.px]='imageWidth'
@@ -54,7 +110,7 @@
                         <td>{{product.price | currency :"USD" : "symbol" :"1.2-2"}}</td>
                         <td>
                             <pm-star [rating]="product.starRating"
-                                (ratingClicked)="onRatingCicked($event)"></pm-star> 
+                                (ratingClicked)="onRatingCicked($event)"></pm-star>
                                 <span class="small">
                                     ( {{product.starRating | number:"1.1-1"}} reviews )
                             </span>
@@ -63,5 +119,28 @@
                 </tbody>
             </table>
         </div>
+
+        <div id="no-results" class="alert alert-warning" *ngIf="(filteredProducts).length==0">
+            <img src="/assets/images/data-not-found.webp" alt="">
+            <div>no products matches your search !</div>
+
+        </div>
+        <ng-template #nodatafound>
+            <div class="container py-2">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading"> <i class="fa-solid fa-triangle-exclamation"></i> no data Found !</h4>
+                    <p>
+                        Aww yeah, you successfully read this important alert message. This
+                        example text is going to run a bit longer so that you can see how
+                        spacing within an alert works with this kind of content.
+                    </p>
+                    <hr />
+                    <p class="mb-0">
+                        Whenever you need to, be sure to use margin utilities to keep things
+                        nice and tidy.
+                    </p>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>

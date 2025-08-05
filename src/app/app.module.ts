@@ -7,7 +7,7 @@ import { WelcomeComponent } from './home/welcome.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductModule } from './products/product.module';
 import { DashboardComponent } from './home/dashboard.component';
-import { DashchartsComponent } from './charts/dashcharts/dashcharts.component';
+
 
 
 
@@ -25,7 +25,7 @@ const routes:Routes=[
     AppComponent,
     WelcomeComponent,
     DashboardComponent,
-    DashchartsComponent,
+
 
   ],
   imports: [
@@ -34,7 +34,8 @@ const routes:Routes=[
     RouterModule.forRoot(routes),
     ProductModule,
 
-    
+
+
   ],
   bootstrap: [AppComponent]
 })

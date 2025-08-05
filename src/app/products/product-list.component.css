@@ -1,3 +1,122 @@
 thead th {
     color:#2196F3;
 }
+
+img.card-img-top {
+    max-height: 100px;
+    min-width: auto;
+    object-fit: contain;
+    padding: 20px 10px 10px;
+    object-position: center;
+}
+
+.my-light .pro-title {
+    color: #42757f
+}
+
+.my-dark .pro-title {
+    color: #ccf4fc
+}
+.pro-title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+
+.btn-outline-primary.btn-primary {
+    color: #ffffff;
+}
+
+.price {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: green;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    left: -10px;
+    border: 1px dashed;
+    transform: rotate(-8deg);
+}
+
+/* table img {
+    height: 70px !important;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    width: 70px;
+} */
+
+#no-results {
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#no-results img {
+    width: 200px;
+}
+
+table {
+    margin-bottom: 0;
+}
+
+.dal-star {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-size: small;
+    justify-content: space-between;
+}
+
+.basic-stars {
+    display: block;
+    min-width: 100;
+}
+
+.myallstars {
+    display: block;
+    font-size: small;
+    min-width: 80px;
+}
+.my-dark .card.item-to-click {
+    background: #055666 !important;
+    color: #fff !important;
+}
+.item-to-click:hover {
+    cursor: pointer !important;
+    box-shadow: 0px 4px 10px #d9d9d9;
+}
+
+.my-dark .item-to-click:hover {
+    background: #000000;
+}
+
+.my-light .item-to-click:hover {
+    background: #fafafa;
+}
+
+tr.item-to-click:hover td {
+    background: #e1f8ff ;
+}
+.my-dark tr.item-to-click:hover td {
+    background: #c3effd85 !important;
+}
+.grid-view .card img {
+transition:  0.9s;
+}
+.grid-view .card:hover img {
+    transform: rotateY(180deg);
+    padding: 10px 0px 0;
+    width: 150%;
+    transition:  0.9s;
+}
+.grid-view .card{
+  margin-bottom: 1em;
+}
+.grid-view {
+    padding: 1em 0;
+}

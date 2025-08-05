@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit, OnDestroy{
     //filteredValue :string =" cart";
     errorMessage: string='';
     clickedMassage :string="";
-    /* 
+    /*
     we can define a TypeScript definite assignment assertion.
      The bang, or exclamation point,
       tells the TypeScript compiler that we
@@ -53,7 +53,7 @@ export class ProductListComponent implements OnInit, OnDestroy{
     }
     ngOnInit(): void {
       //console.log("oninit");
-      //default value 
+      //default value
       this.sub = this.productService.getProducts().subscribe({
         next:products =>{
           this.products=products;
@@ -68,6 +68,33 @@ export class ProductListComponent implements OnInit, OnDestroy{
     }
     onRatingCicked(clickedMassage:string):void{
       this.clickedMassage = `${clickedMassage}`;
-      
+
     }
+  gridView: boolean = true;
+   tableView!: boolean;
+  onshowGrid() {
+    this.gridView = true;
+
+    if ((this.gridView = true)) {
+      this.tableView = false;
+      (document.querySelector('.show-table') as HTMLElement).classList.remove('btn-primary');
+      (document.querySelector('.show-grid') as HTMLElement).classList.add('btn-primary');
+    } else if ((this.gridView = false)) {
+      this.tableView = true;
+    }
+  }
+  onshowtable() {
+    // this.tableView=false;
+    if ((this.tableView = true)) {
+      this.gridView = false;
+      (document.querySelector('.show-grid') as HTMLElement).classList.remove(
+        'btn-primary'
+      );
+      (document.querySelector('.show-table') as HTMLElement).classList.add(
+        'btn-primary'
+      );
+    } else if ((this.tableView = false)) {
+      this.gridView = true;
+    }
+  }
 }
